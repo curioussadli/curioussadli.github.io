@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umar Sadli - Data Scientist</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* General Styling */
+        :root {
+            --primary-blue: #007bff; /* Biru utama */
+            --secondary-blue: #0056b3; /* Biru yang sedikit lebih gelap */
+            --text-color: #333;
+            --light-grey: #f8f8f8;
+            --border-color: #ddd;
+            --font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif; /* Font modern dan bersih */
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-grey);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-blue);
+            margin: 10px auto 0;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .primary-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: 1px solid var(--primary-blue);
+        }
+
+        .primary-btn:hover {
+            background-color: var(--secondary-blue);
+            border-color: var(--secondary-blue);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Header / Hero Section */
+        .hero-section {
+            background: white; /* Dominan putih */
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .profile-pic-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            background-color: var(--light-grey); /* Warna latar jika gambar belum dimuat */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid var(--primary-blue); /* Border biru */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: var(--text-color); /* Nama bisa hitam */
+        }
+
+        .hero-section .tagline {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            font-size: 1.8em;
+            margin: 0 10px;
+            color: var(--primary-blue);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-blue);
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background-color: var(--primary-blue);
+            padding: 10px 0;
+            position: sticky; /* Sticky navigation */
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-nav ul li a {
+            color: white;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: var(--secondary-blue);
+            text-decoration: none;
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 20px;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* About Section */
+        .about-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Skills Section */
+        .skills-section .skill-category {
+            margin-bottom: 30px;
+        }
+
+        .skills-section h3 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .skills-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills-section ul li {
+            background-color: var(--light-grey);
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95em;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Experience & Education Sections */
+        .job-item, .edu-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .job-item h3, .edu-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--secondary-blue);
+        }
+
+        .job-item p, .edu-item p {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .job-item ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #555;
+        }
+
+        /* Projects Section */
+        .projects-section .project-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .projects-section .project-item h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .projects-section .project-item p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .project-links .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #333; /* Default untuk GitHub */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-links .project-link-btn:hover {
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        /* Contact Section */
+        .contact-form input,
+        .contact-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: var(--font-family);
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            width: auto;
+            padding: 12px 30px;
+            border-radius: 5px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main-nav ul li a {
+                padding: 8px 15px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-section .tagline {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+            .section {
+                padding: 40px 15px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="profile-pic-container">
+                <img src="your-avatar.svg" alt="Umar Sadli" class="profile-avatar">
+            </div>
+            <h1>Umar Sadli</h1>
+            <p class="tagline">Data Scientist | Transforming Data into Actionable Insights</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn primary-btn">View My Portfolio</a>
+                <a href="your-resume.pdf" download class="btn secondary-btn">Download Resume (PDF)</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav" id="mainNav">
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>Hello! I'm Sadli, a highly motivated and analytical professional with a unique blend of marketing, finance, and data science expertise. My journey from FMCG sales & marketing (Unilever, Nestle) to mastering financial management (S2) and now deep diving into data analytics and machine learning has equipped me with a holistic perspective. I'm passionate about uncovering hidden patterns in data, building predictive models, and leveraging insights to drive strategic business decisions. My goal is to become a recognized expert in data and a successful investor, leveraging flexible digital income streams to achieve financial freedom.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>R (Optional)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Libraries & Frameworks</h3>
+                    <ul>
+                        <li>Pandas, NumPy</li>
+                        <li>Scikit-learn</li>
+                        <li>Matplotlib, Seaborn</li>
+                        <li>TensorFlow / PyTorch (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>Excel</li>
+                        <li>Tableau, Power BI</li>
+                        <li>Google Cloud Platform (GCP) / AWS / Azure</li>
+                        <li>GitHub</li>
+                        <li>VS Code</li>
+                    </ul>
+                </div>
+                </div>
+        </section>
+
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="job-item">
+                    <h3>Sales - Unilever Indonesia</h3>
+                    <p><em>(2016 - 2018)</em></p>
+                    <ul>
+                        <li>Managed key accounts and achieved X% sales growth in Y region.</li>
+                        <li>Developed and executed sales strategies that resulted in Z% market share increase.</li>
+                    </ul>
+                </div>
+                <div class="job-item">
+                    <h3>Marketing - Nestle Professional</h3>
+                    <p><em>(2019 - 2019)</em></p>
+                    <ul>
+                        <li>Led marketing campaigns for [Product Category] which boosted brand awareness by X%.</li>
+                        <li>Analyzed market trends to inform product development, contributing to Y% revenue growth.</li>
+                    </ul>
+                </div>
+                <div class="job-item">
+                    <h3>Owner - Roti Bakar Usaha Anda</h3>
+                    <p><em>(2021 - Sekarang)</em></p>
+                    <ul>
+                        <li>Established and managed a small F&B business, overseeing operations, sales, and a team of 1.</li>
+                        <li>Implemented cost-efficiency measures, leading to X% profit margin improvement during pandemic.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section education-section">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="edu-item">
+                    <h3>Master of Financial Management</h3>
+                    <p><em>(2023 - 2025) - Universitas Semarang</em></p>
+                </div>
+                <div class="edu-item">
+                    <h3>Bachelor of Marketing Management</h3>
+                    <p><em>(2016 - 2020) - Universitas Semarang</em></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="project-item">
+                    <h3>Project 1: Customer Churn Prediction</h3>
+                    <p>Developed a machine learning model to predict customer churn for an e-commerce platform using Python (Scikit-learn, Pandas). Achieved an accuracy of X% and identified key churn drivers.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourgithub/project1" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View Code</a>
+                        <a href="https://yourdemolink.com/project1" target="_blank" class="project-link-btn" style="background-color: #55acee;"><i class="fas fa-chart-bar"></i> View Demo</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <h3>Project 2: Stock Market Trend Analysis</h3>
+                    <p>Analyzed historical stock data using SQL and visualized trends in Tableau to identify potential investment opportunities. Explored correlations between macroeconomic indicators and stock performance.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/yourgithub/project2" target="_blank" class="project-link-btn"><i class="fab fa-github"></i> View Code</a>
+                        <a href="https://public.tableau.com/profile/yourname/project2" target="_blank" class="project-link-btn" style="background-color: #E97627;"><i class="fas fa-chart-pie"></i> View Dashboard</a>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out for collaborations, project discussions, or just to say hello!</p>
+                <form class="contact-form" action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling untuk navigasi
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - document.getElementById('mainNav').offsetHeight, // Sesuaikan dengan tinggi nav jika sticky
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Menangani form kontak (Contoh: console log data, atau kirim ke layanan seperti Formspree)
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Mencegah reload halaman
+                    alert('Form submitted! (This is a demo. You need a backend or service like Formspree to handle submissions.)');
+                    console.log('Form Data:', {
+                        name: this.name.value,
+                        email: this.email.value,
+                        message: this.message.value
+                    });
+                    // Untuk mengirim email, Anda bisa menggunakan layanan seperti Formspree.io atau Netlify Forms
+                    // Ubah action="#" menjadi action="https://formspree.io/f/yourformid"
+                });
+            }
+
+            // Optional: Highlight active nav link on scroll
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - document.getElementById('mainNav').offsetHeight - 50; // Adjust offset
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
